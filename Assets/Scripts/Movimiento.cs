@@ -4,6 +4,7 @@ using UnityEngine.InputSystem.Controls;
 
 public class Movimiento : MonoBehaviour
 {
+    [SerializeField]
     public float Velocidad = 5.0f;
 
     private Rigidbody2D _body;
@@ -22,7 +23,7 @@ public class Movimiento : MonoBehaviour
 
     public void FixedUpdate()
     {
-        _body.MovePosition(_body.position + _movimiento * Velocidad * Time.fixedDeltaTime);
+        _body.linearVelocity = _movimiento.normalized * Velocidad;
     }
 
     public static float Axis(KeyControl positive, KeyControl negative)
